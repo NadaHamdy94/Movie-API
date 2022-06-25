@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <title>Movie</title>
+    </head>
+    <body>
+        
+        <section id="side-bar">
+            <div class="side-nav position-fixed top-0 bottom-0 start-0 bg-black d-flex">
+              <div class="sidebar-content  h-100 d-flex flex-column justify-content-between">
+                <ul class="movie-list list-unstyled text-white text-capitalize ps-4 fw-normal ">
+                    <li class="py-3 wow bounceInUp" data-wow-duration="0.3s"><a href="#now_playing" id="now_playing">now playing</a></li>
+                    <li class="py-3 wow bounceInUp" data-wow-duration="0.6s"><a href="#popular" id="popular">popular</a></li>
+                    <li class="py-3 wow bounceInUp" data-wow-duration="0.9s"><a href="#top_rated" id="top_rated">top rated</a></li>
+                    <li class="py-3 wow bounceInUp"data-wow-duration="1.2s"><a href="#trending" id="trending">trending</a></li>
+                    <li class="py-3 wow bounceInUp" data-wow-duration="1.5s"><a href="#upcoming" id="upcoming">upcoming</a></li>
+                    <li class="py-3 wow bounceInUp"data-wow-duration="1.8s"><a href="#contact">contact us</a></li>
+                </ul>
+                <div class="side-footer ps-4 ">
+                    <div class="social-network text-white ">
+                        <a href="#" class="pe-3"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="pe-3"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="pe-3"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                    <div class="copy-right pe-3 py-3">
+                        <p class="text-width">Copyright Â© 2019 All Rights Reserved.</p>
+                    </div>
+                </div>
+              </div>
+              <div class="sidebar-icons py-3 bg-white d-flex flex-column align-items-center justify-content-between" >
+                <div class="pic-logo text-center"><a href="#"><img src="images/logo.png" class="w-50" alt="logo"></a></div>
+                <div class="toggle-icon">
+                    <a href="#" id="toggleIconElement" class="text-black fw-bolder fs-4"><i class="fa fa-align-justify"></i></a>
+                </div>
+                <div class="footer-icon">
+                   <div class="globe-icon pb-3"><a href="#" class="text-black"><i class="fa-solid fa-globe"></i></a></div>
+                   <div class="share-icon"><a href="#" class="text-black"><i class="fa-solid fa-share-nodes"></i></a></div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <section id="home" class="py-5">
+            <div class="container home-container">
+                <div class="row">
+                    <div class="col-md-6"><input id="searchByWordElement" type="text" class="form-control" placeholder="get movies by word..."></div>
+                    <div class="col-md-6"><input id="searchByMovieElement" type="text" class="form-control" placeholder="search..."></div>
+                </div>
+
+                <div class="movies py-5">
+                    <div class="row" id="movieContainerElement">
+                    </div>
+                </div>
+                <div class="row personal-form " id="contact">
+                    <h2 class="py-5">ContacUs...</h2>
+                    <div class="col-md-6 name-input">
+                        <input type="text" class="form-control my-2" id="nameInput" placeholder="Enter Your Name">
+                        <p class="error-massage p-2 d-none" id="errorMassageName"></p>
+                    </div>
+                    <div class="col-md-6 name-input">
+                        <input type="email" class="form-control my-2" id="emailInput" placeholder="Enter Email">
+                        <p class="error-massage p-2 d-none" id="errorMassageEmail"></p>
+                    </div>
+                    <div class="col-md-6 name-input">
+                        <input type="text" class="form-control my-2" id="phoneNumberInput" placeholder="Enter Phone">
+                        <p class="error-massage p-2 d-none" id="errorMassagephone"></p>
+                    </div>
+                    <div class="col-md-6 name-input">
+                        <input type="text" class="form-control my-2" id="ageInput" placeholder="Enter Age">
+                        <p class="error-massage p-2 d-none" id="errorMassageAge"></p>
+                    </div>
+                    <div class="col-md-6 name-input">
+                        <input type="password" class="form-control my-2" id="passwordInput" placeholder="Enter Password">
+                        <p class="error-massage p-2 d-none" id="errorMassagePassword"></p>
+                    </div>
+                    <div class="col-md-6 name-input">
+                        <input type="password" class="form-control my-2" id="rePasswordInput" placeholder="Enter RePassword">
+                        <p class="error-massage p-2 d-none" id="errorMassageRepassword"></p>
+                    </div>
+                    <div class="submit-btn mt-3"><button class="btn btn-outline-danger">Submit</button></div>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/wow.min.js"></script>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
