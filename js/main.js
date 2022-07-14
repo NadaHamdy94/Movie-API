@@ -43,7 +43,6 @@ let movieArray=[];
     let finalResult=response.results;
     movieArray=response.results;
     displayMovies(finalResult);
-    console.log(movieArray);
   }
 
   function displayMovies(moviesList)
@@ -52,10 +51,12 @@ let movieArray=[];
     for (let index = 0; index < moviesList.length; index++) {
         if(moviesList[index].media_type == 'tv')
         {
-          temp += `
+          if(moviesList[index].poster_path != null)
+          {
+            temp += `
         <div class="  col-md-4 text-center   ">
                           <figure class="poster rounded-2 position-relative overflow-hidden" >
-                              <img src="https://image.tmdb.org/t/p/w500${moviesList[index].poster_path}" class=" w-100" alt="movie-poster" class="w-100" alt="">
+                              <img src="https://image.tmdb.org/t/p/w500${moviesList[index].poster_path}" class=" w-100" alt="movie-poster" class="w-100" alt="movie poster">
                               <figcaption class=" pic-caption position-absolute   px-3 w-100 h-100 rounded-2  d-flex align-items-center">
                                   <div class="poster-content">
                                    <h2>${moviesList[index].name}</h2>
@@ -68,25 +69,69 @@ let movieArray=[];
                           </figure>
           </div>
         ` ;
+          }
+          else
+          {
+
+            temp += `
+        <div class="  col-md-4 text-center   ">
+                          <figure class="poster rounded-2 position-relative overflow-hidden" >
+                              <img src="images/404.png" class=" w-100" alt="movie-poster" class="w-100" alt="404">
+                              <figcaption class=" pic-caption position-absolute   px-3 w-100 h-100 rounded-2  d-flex align-items-center">
+                                  <div class="poster-content">
+                                   <h2>${moviesList[index].name}</h2>
+                                   <p class="py-2">${moviesList[index].overview}</p>
+                                   <p>rate: ${moviesList[index].vote_average}</p>
+                                   <p>${moviesList[index].first_air_date}</p>
+                                  </div>
+                               </figcaption>
+                          
+                          </figure>
+          </div>
+        ` ;
+          }
+          
         }
         else if (moviesList[index].media_type == 'movie' || moviesList[index].media_type == undefined)
         {
-          temp += `
-          <div class="  col-md-4 text-center   ">
-                            <figure class="poster rounded-2 position-relative overflow-hidden" >
-                                <img src="https://image.tmdb.org/t/p/w500${moviesList[index].poster_path}" class=" w-100" alt="movie-poster" class="w-100" alt="">
-                                <figcaption class=" pic-caption position-absolute   px-3 w-100 h-100 rounded-2  d-flex align-items-center">
-                                    <div class="poster-content">
-                                     <h2>${moviesList[index].title}</h2>
-                                     <p class="py-2">${moviesList[index].overview}</p>
-                                     <p>rate: ${moviesList[index].vote_average}</p>
-                                     <p>${moviesList[index].release_date}</p>
-                                    </div>
-                                 </figcaption>
-                            
-                            </figure>
-            </div>
-          ` ; 
+          if(moviesList[index].poster_path != null)
+          {
+            temp += `
+            <div class="  col-md-4 text-center   ">
+                              <figure class="poster rounded-2 position-relative overflow-hidden" >
+                                  <img src="https://image.tmdb.org/t/p/w500${moviesList[index].poster_path}" class=" w-100" alt="movie-poster" class="w-100" alt="poster movie">
+                                  <figcaption class=" pic-caption position-absolute   px-3 w-100 h-100 rounded-2  d-flex align-items-center">
+                                      <div class="poster-content">
+                                       <h2>${moviesList[index].title}</h2>
+                                       <p class="py-2">${moviesList[index].overview}</p>
+                                       <p>rate: ${moviesList[index].vote_average}</p>
+                                       <p>${moviesList[index].release_date}</p>
+                                      </div>
+                                   </figcaption>
+                              
+                              </figure>
+              </div>
+            ` ; 
+          }
+          else 
+          {
+            temp += `
+            <div class="  col-md-4 text-center   ">
+                              <figure class="poster rounded-2 position-relative overflow-hidden" >
+                                  <img src="images/404.png" class=" w-100" alt="movie-poster" class="w-100" alt="404 error">
+                                  <figcaption class=" pic-caption position-absolute   px-3 w-100 h-100 rounded-2  d-flex align-items-center">
+                                      <div class="poster-content">
+                                       <h2>${moviesList[index].title}</h2>
+                                       <p class="py-2">${moviesList[index].overview}</p>
+                                       <p>rate: ${moviesList[index].vote_average}</p>
+                                       <p>${moviesList[index].release_date}</p>
+                                      </div>
+                                   </figcaption>
+                              
+                              </figure>
+              </div>
+            ` ; 
+          }
         }
     }
     movieContainerElement.innerHTML=temp;
@@ -129,10 +174,14 @@ let movieArray=[];
   }
   async function searchByMovieAPI()
   {
-    let movies=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=b339567fd94884a0343e311bf63cef5c&language=en-US&page=1&include_adult=false&query=${searchByMovieElement.value}`);
-    let response= await movies.json();
-    let finalResult=response.results;
-    displayMovies(finalResult);
+    if(searchByMovieElement.value != '')
+    {
+      let movies=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=b339567fd94884a0343e311bf63cef5c&language=en-US&page=1&include_adult=false&query=${searchByMovieElement.value}`);
+      let response= await movies.json();
+      let finalResult=response.results;
+      console.log(finalResult);
+      displayMovies(finalResult);
+    }
   }
   searchByWordElement.addEventListener('input', function(){
     searchByWord();
